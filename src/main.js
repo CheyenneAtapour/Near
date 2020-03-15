@@ -51,7 +51,7 @@ function signedOutFlow() {
             // The contract name that would be authorized to be called by the user's account.
             window.nearConfig.contractName,
             // This is the app name. It can be anything.
-            'Welcome to NEAR'
+            'Heartbleed'
         );
     });
 }
