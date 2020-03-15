@@ -23,7 +23,7 @@ app.use(express.urlencoded({
 http.listen(port, () => console.log(`listening on port ${port}`));
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/src/index.html');
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/change', (req, res) => {
