@@ -44,7 +44,7 @@ async function doWork() {
 // Function that initializes the signIn button using WalletAccount
 function signedOutFlow() {
     // Displaying the signed out flow container.
-    //document.getElementById('signed-out-flow').classList.remove('d-none');
+    Array.from(document.querySelectorAll('.signed-out')).forEach(el => el.style.display = '');
     // Adding an event to a sing-in button.
     document.getElementById('sign-in').addEventListener('click', () => {
         window.walletAccount.requestSignIn(
