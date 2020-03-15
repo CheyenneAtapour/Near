@@ -1,6 +1,6 @@
-import "regenerator-runtime/runtime";
-import * as nearlib from "nearlib";
-import getConfig from "./config.js";
+//import "regenerator-runtime/runtime";
+//import * as nearlib from "nearlib";
+//import getConfig from "./config.js";
 
 let nearConfig = getConfig("development");
 window.nearConfig = nearConfig;
@@ -44,9 +44,9 @@ async function doWork() {
 // Function that initializes the signIn button using WalletAccount
 function signedOutFlow() {
     // Displaying the signed out flow container.
-    document.getElementById('signed-out-flow').classList.remove('d-none');
+    //document.getElementById('signed-out-flow').classList.remove('d-none');
     // Adding an event to a sing-in button.
-    document.getElementById('sign-in-button').addEventListener('click', () => {
+    document.getElementById('sign-in').addEventListener('click', () => {
         window.walletAccount.requestSignIn(
             // The contract name that would be authorized to be called by the user's account.
             window.nearConfig.contractName,
@@ -59,26 +59,26 @@ function signedOutFlow() {
 // Main function for the signed-in flow (already authorized by the wallet).
 function signedInFlow() {
     // Displaying the signed in flow container.
-    document.getElementById('signed-in-flow').classList.remove('d-none');
+    Array.from(document.querySelectorAll('.signed-in')).forEach(el => el.style.display = '');
 
-    welcome();
+    document.getElementById('account-id').innerText = window.accountId;
 
     // Adding an event to a sign-out button.
-    document.getElementById('sign-out-button').addEventListener('click', () => {
+    document.getElementById('sign-out').addEventListener('click', () => {
         walletAccount.signOut();
         // Forcing redirect.
         window.location.replace(window.location.origin + window.location.pathname);
     });
 
     // Adding an event to change greeting button.
-    document.getElementById('change-greeting').addEventListener('click', () => {
-        setGreeting();
-    });
+    //document.getElementById('change-greeting').addEventListener('click', () => {
+      //  setGreeting();
+    //});
 }
 
 async function setGreeting() {
     await window.contract.set_greeting({message:'Howdy'});
-    welcome();
+    //welcome();
 }
 
 async function welcome() {

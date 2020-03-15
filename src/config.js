@@ -56,7 +56,7 @@
         }
     }
 
-module.exports = getConfig;
+//module.exports = getConfig;
 
 
 
