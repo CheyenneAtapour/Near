@@ -1,9 +1,8 @@
 import "regenerator-runtime/runtime";
+import * as nearlib from "nearlib";
+import getConfig from "./config.js";
 
-import * as nearlib from "nearlib"
-import getConfig from "./config"
-
-let nearConfig = getConfig(process.env.NODE_ENV || "development");
+let nearConfig = getConfig("development");
 window.nearConfig = nearConfig;
 
 // Initializing contract
@@ -24,9 +23,9 @@ async function InitContract() {
     window.contract = await near.loadContract(nearConfig.contractName, { // eslint-disable-line require-atomic-updates
         // NOTE: This configuration only needed while NEAR is still in development
         // View methods are read only. They don't modify the state, but usually return some value.
-        viewMethods: ['welcome'],
+        viewMethods: ['auth_contract'],
         // Change methods can modify the state. But you don't receive the returned value when called.
-        changeMethods: ['set_greeting'],
+        changeMethods: ['Heartbleed'],
         // Sender is the account ID to initialize transactions.
         sender: window.accountId,
     });

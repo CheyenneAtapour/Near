@@ -7,6 +7,7 @@
 </head>
 <body>
   <h1><a id="who" target="_blank"></a> Please type in your NEAR ID for login</h1>
+  <!--
   <form id="near-auth-form" method="POST" action="/change">
     <label> Input Username: <input name="username" type="text"></label>
     <input type="submit" value="Sign in with NEAR"> 
@@ -14,12 +15,19 @@
   <h1>Hello World</h1>
     <ul>
         <li>List item 1</li>
-        <!-- li items with class change will be changed on button click -->
+        li items with class change will be changed on button click
         <li class='change'>List item 2</li>
         <button class="trigger" href="/change">Trigger Change</button>
     </ul>
   <h1> test header </h1>
   <a href="/change" id ="change-now">change</a>
+  -->
+  <button id="sign-in" class="signed-out" style="display: none">
+    Sign in with NEAR
+  </button>
+  <button id="say-hi" class="signed-in" style="display: none">
+    Successfully signed into NEAR
+  </button>
   <footer>
     <p class="signed-in">
       Signed in as <a id="account-id" href="https://wallet.nearprotocol.com/profile" target="_blank"></a>

@@ -12,7 +12,7 @@ let game;
 let gameIdCounter = 0;
 
 // Create path for /views and /public directories 
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/src'));
 app.use(express.static(__dirname + '/public'));
 
 // Parse URL-encoded bodies sent from HTML form 
@@ -23,7 +23,7 @@ app.use(express.urlencoded({
 http.listen(port, () => console.log(`listening on port ${port}`));
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile(__dirname + '/src/index.html');
 });
 
 app.get('/change', (req, res) => {
