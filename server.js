@@ -15,6 +15,11 @@ let gameIdCounter = 0;
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
 
+// Parse URL-encoded bodies sent from HTML form 
+app.use(express.urlencoded({
+  extended: true
+}));
+
 http.listen(port, () => console.log(`listening on port ${port}`));
 
 app.get('/', function(req, res) {
@@ -22,16 +27,24 @@ app.get('/', function(req, res) {
 });
 
 app.get('/change', (req, res) => {
+  res.render('index');
+});
+
+app.post('/change', (req, res) => {
+  let username = req.body.username;
+      console.log(username);
+
   var cp = require('child_process');
-  var ls = cp.spawn('ls', ['-lsa']);
+
+  var near_login = cp.exec('near login');
   var dataOut = "";
 
-  ls.stdout.on('data', function(data) {
+  near_login.stdout.on('data', function(data) {
     console.log('Message: ' + data);
     dataOut = data;
   });
 
-  ls.on('close', function(code, signal) {
+  near_login.on('close', function(code, signal) {
     console.log('ls finished...');
     console.log('data out was: ' + dataOut);
   });
